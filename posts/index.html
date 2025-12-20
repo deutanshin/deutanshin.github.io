@@ -22,15 +22,59 @@ background: '/img/home-bg.png'
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
 
-      <div class="text-right mb-4">
-        <a href="{{ '/categories.html' | relative_url }}" class="btn btn-secondary">All Categories</a>
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-3">
+
+      <!-- Profile / Info Widget -->
+      <div class="card mb-4 border-0">
+        <div class="card-body">
+          <ul class="list-unstyled mb-0">
+            {% if site.email %}
+            <li class="mb-2">
+              <i class="fas fa-envelope mr-2"></i> <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+            </li>
+            {% endif %}
+            {% if site.github_username %}
+            <li class="mb-2">
+              <i class="fab fa-github mr-2"></i> <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+            </li>
+            {% endif %}
+            <!-- Add more links here if needed -->
+          </ul>
+        </div>
       </div>
 
+      <!-- Categories Widget -->
+      <div class="card my-4 border-0">
+        <h5 class="card-header bg-white border-0 font-weight-bold p-0 mb-3">Categories</h5>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-1">
+              <a href="{{ '/posts' | relative_url }}" class="text-dark font-weight-bold">
+                <i class="fas fa-folder-open mr-2"></i>All Posts
+              </a>
+              <span class="badge badge-light">{{ site.posts | size }}</span>
+            </li>
+            {% for category in site.categories %}
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-1">
+              <a href="{{ '/categories.html' | relative_url }}#{{ category | first | slugify }}" class="text-muted">
+                <i class="fas fa-folder mr-2"></i>{{ category | first }}
+              </a>
+              <span class="badge badge-light">{{ category | last | size }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Main Content Column -->
+    <div class="col-md-9">
       <div class="row">
         {% for post in paginator.posts %}
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-6 col-md-6 mb-4">
           <div class="card h-100">
             {% if post.background %}
             <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
@@ -47,13 +91,14 @@ background: '/img/home-bg.png'
               {% endif %}
               <p class="card-text">{{ post.excerpt | strip_html | truncatewords: 15 }}</p>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted bg-white border-top-0">
               <small>
-                Posted on {{ post.date | date: '%B %d, %Y' }}
+                <i class="far fa-calendar-alt mr-1"></i> {{ post.date | date: '%Y.%m.%d' }}
                 {% if post.categories %}
                 <br>
+                <i class="fas fa-tags mr-1"></i>
                 {% for category in post.categories %}
-                <span class="badge badge-info">{{ category }}</span>
+                <span class="badge badge-light border">{{ category }}</span>
                 {% endfor %}
                 {% endif %}
               </small>
@@ -68,18 +113,17 @@ background: '/img/home-bg.png'
       <div class="clearfix mt-4">
         {% if paginator.previous_page %}
         <a class="btn btn-primary float-left"
-          href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer<span
-            class="d-none d-md-inline"> Posts</span></a>
+          href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer</a>
         {% endif %}
 
         {% if paginator.next_page %}
         <a class="btn btn-primary float-right"
-          href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older<span
-            class="d-none d-md-inline"> Posts</span> &rarr;</a>
+          href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older &rarr;</a>
         {% endif %}
       </div>
       {% endif %}
 
     </div>
+
   </div>
 </div>
