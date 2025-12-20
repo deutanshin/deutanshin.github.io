@@ -1,0 +1,23 @@
+---
+layout: page
+title: Categories
+background: '/img/home-bg.png'
+---
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for category in site.categories %}
+            <h2 class="section-heading" id="{{ category | first | slugify }}">{{ category | first }}</h2>
+            <ul class="list-group mb-5">
+                {% for post in category.last %}
+                <li class="list-group-item">
+                    <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                    <span class="float-right text-muted">{{ post.date | date: "%b %-d, %Y" }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
