@@ -1,2 +1,9 @@
 // Import Core Clean Blog SCSS
 @import "../assets/vendor/startbootstrap-clean-blog/scss/styles.scss";
+
+// Custom styles
+.section-heading {
+    color: #0085A1 !important;
+    /* Theme Teal Color with !important to enforce uniformity */
+    font-weight: 800;
+}
