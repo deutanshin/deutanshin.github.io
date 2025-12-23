@@ -15,6 +15,12 @@ linkedin_username:
 # Add your google-analytics ID here to activate google analytics
 google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 
+# Comment settings (Utterances)
+utterances:
+  repo: deutanshin/deutanshin.github.io
+  issue_term: pathname # map post to issue by url path
+  theme: github-light
+
 # Build settings
 markdown:           kramdown
 paginate:           5
