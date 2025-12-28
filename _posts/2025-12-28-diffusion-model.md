@@ -5,12 +5,14 @@ subtitle: "Generative Model"
 date: 2025-12-28 11:00:00 +0900
 categories: [Generative Model]
 background: '/img/home-bg.png' 
+use_math: true
 ---
 
 ## 1. Introduction
 **diffusion model**은 최근 생성모델들의 핵심기술이다.
 
 ![](/assets/images/2025-12-28-diffusion-model/2025-12-28-16-46-32.png)
+<br>
 맑은 물에 잉크를 떨어뜨리면 확산 과정은 예측하기 어렵지만
 시간이 지나면 **uniform**한 분포를 이룰 것이다.
 
@@ -20,15 +22,15 @@ background: '/img/home-bg.png'
 ---
 
 ## 2. Core Concept
-*diffusion Model*은 데이터에 노이즈를 점진적으로 추가했다가, 이를 다시 복원하는 과정을 학습한다.
+**diffusion Model**은 데이터에 노이즈를 점진적으로 추가했다가, 이를 다시 복원하는 과정을 학습한다.
+![](/assets/images/2025-12-28-diffusion-model/2025-12-28-17-08-23.png)
 
-### 1) Forward Diffusion Process (Noising)
-데이터 $x_0$에서 시작하여 가우시안 노이즈를 단계적으로 추가하여 완전한 노이즈 $x_T$를 만드는 과정이다.
-- **수식:** $q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t}x_{t-1}, \beta_t I)$
+### 2-1) Forward Diffusion Process (Noising)
+![](/assets/images/2025-12-28-diffusion-model/2025-12-28-17-27-00.png)
+**Forward Process** 또는 **Diffusion Process**라고 불리는 이 과정은 
+$x_0$부터 $x_T$까지 **Gaussian noise**를 점진적으로 추가하는 과정이며 학습은 하지 않는다.
 
-### 2) Reverse Diffusion Process (Denoising)
-모델이 학습하는 핵심 부분으로, 노이즈 $x_t$에서 이전 단계 $x_{t-1}$을 예측하여 원본 데이터를 복원한다.
-- **Goal:** $p_\theta(x_{t-1} | x_t)$를 정교하게 예측하는 신경망 학습
+### 2-2) Reverse Diffusion Process (Denoising)
 
 ---
 
@@ -48,5 +50,5 @@ background: '/img/home-bg.png'
 
 
 ## References
-* 
+* **https://www.calibraint.com/blog/beginners-guide-to-diffusion-models**
 * 
