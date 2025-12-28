@@ -28,18 +28,18 @@ use_math: true
 ### 2-1) Forward Diffusion Process (Noising)
 ![](/assets/images/2025-12-28-diffusion-model/2025-12-28-17-27-00.png)
 **Forward Process** 또는 **Diffusion Process**라고 불리는 이 과정은 
-**$x_0$**부터 **$x_T$**까지 **Gaussian noise**를 점진적으로 추가하는 과정이며 학습은 하지 않는다.
+$x_0$부터 $x_T$까지 **Gaussian noise**를 점진적으로 추가하는 과정이며 학습은 하지 않는다.
 
 ![](/assets/images/2025-12-28-diffusion-model/2025-12-28-23-59-19.png)
 <br>
-어떤 시점 t에 대해서 **$x_t-1$** 이미지에서 **$x_t$**이미지로 넘어가는 step에서 수학적으로 스케줄링 된 랜덤한 noise를 이미지에 붙인다.
-이때 아주 작은 값인 **$\beta$**를 이용해서 기존 이미지의 픽셀 값을 깎고, 노이즈를 넣는 가중 합을 실행하게 된다.
+어떤 시점 t에 대해서 $x_{t-1}$ 이미지에서 $x_t$이미지로 넘어가는 step에서 수학적으로 스케줄링 된 랜덤한 **noise**를 이미지에 붙인다.
+이때 아주 작은 값인 $\beta$를 이용해서 기존 이미지의 픽셀 값을 깎고, 노이즈를 넣는 가중 합을 실행하게 된다.
 
-그리고 그러한 전 과정을 **$x_0$**에 대한 Joint Distribution으로 나타낼 수 있다.
+그리고 그러한 전 과정을 $x_0$에 대한 **Joint Distribution**으로 나타낼 수 있다.
 
 ![](/assets/images/2025-12-28-diffusion-model/2025-12-29-00-05-30.png)
 <br>
-이때 Forward Process는 학습에 사용하지 않으니 $x_0$에서 $x_t$까지 한 번에 생성할 수 있는 **Reparameterization Trick**을 사용할 수 있다.
+이때 Forward Process는 학습에 사용하지 않으니 $x_0$에서 $x_t$까지 한 번에 생성할 수 있는 [Reparameterization Trick](https://velog.io/@strongdeutan00/Reparameterization-Trick-for-Diffusion-Model)을 사용할 수 있다.
 
 
 ### 2-2) Reverse Diffusion Process (Denoising)
