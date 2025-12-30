@@ -4,7 +4,7 @@ title: "Diffusion Model"
 subtitle: "Generative Model"
 date: 2025-12-28 11:00:00 +0900
 categories: [Generative Model]
-background: '/img/home-bg.png' 
+background: '/assets/images/2025-12-28-diffusion-model/2025-12-28-16-46-32.png 
 use_math: true
 ---
 
