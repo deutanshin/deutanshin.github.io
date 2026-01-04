@@ -46,7 +46,7 @@ $x_0$부터 $x_T$까지 **Gaussian noise**를 점진적으로 추가하는 과�
 
 ---
 
-## 3. Diffusion Model의 장점
+## 3. Diffusion Model의 장점a
 * **Training Stability:** GAN처럼 적대적 학습이 아니기에 학습이 안정적이다.
 * **Sample Quality:** 높은 다양성과 고품질의 이미지를 생성한다.
 * **Mode Collapse 방지:** 데이터 분포의 모든 영역을 골고루 학습한다.
